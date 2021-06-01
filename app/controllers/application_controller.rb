@@ -1,3 +1,35 @@
+Skip to content
+Why GitHub?
+Team
+Enterprise
+Explore
+Marketplace
+Pricing
+Search
+
+Sign in
+Sign up
+learn-co-students
+/
+sinatra-secure-password-lab-online-web-sp-000
+0373
+Code
+Issues
+Pull requests
+365
+Actions
+Projects
+Security
+Insights
+sinatra-secure-password-lab-online-web-sp-000/app/controllers/application_controller.rb /
+@DanielSeehausen
+DanielSeehausen removed leftover success action
+Latest commit 024cf10 on Mar 14, 2018
+ History
+ 5 contributors
+@victhevenot@DanielSeehausen@SophieDeBenedetto@jmburges@dfenjves
+68 lines (54 sloc)  1.12 KB
+
 require "./config/environment"
 require "./app/models/user"
 class ApplicationController < Sinatra::Base
@@ -18,12 +50,12 @@ class ApplicationController < Sinatra::Base
 
   post "/signup" do
     if params[:username] == "" || params[:password] == ""
-      redirect "/failure"
+      redirect '/failure'
     else
       User.create(username: params[:username], password: params[:password])
-      redirect "/Login"
+      redirect '/login'
     end
-    #your code here
+
   end
 
   get '/account' do
@@ -37,14 +69,13 @@ class ApplicationController < Sinatra::Base
   end
 
   post "/login" do
-    user = User.find_by(username: params[:username], password: params[:password])
-    if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
-      redirect "/account"
+    @user = User.find_by(username: params[:username])
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect to "/account"
     else
-      redirect "failure"
+      redirect to "/failure"
     end
-    ##your code here
   end
 
   get "/failure" do
