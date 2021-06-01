@@ -1,35 +1,3 @@
-Skip to content
-Why GitHub?
-Team
-Enterprise
-Explore
-Marketplace
-Pricing
-Search
-
-Sign in
-Sign up
-learn-co-students
-/
-sinatra-secure-password-lab-online-web-sp-000
-0373
-Code
-Issues
-Pull requests
-365
-Actions
-Projects
-Security
-Insights
-sinatra-secure-password-lab-online-web-sp-000/app/controllers/application_controller.rb /
-@DanielSeehausen
-DanielSeehausen removed leftover success action
-Latest commit 024cf10 on Mar 14, 2018
- History
- 5 contributors
-@victhevenot@DanielSeehausen@SophieDeBenedetto@jmburges@dfenjves
-68 lines (54 sloc)  1.12 KB
-
 require "./config/environment"
 require "./app/models/user"
 class ApplicationController < Sinatra::Base
@@ -77,7 +45,7 @@ class ApplicationController < Sinatra::Base
       redirect to "/failure"
     end
   end
-
+  
   get "/failure" do
     erb :failure
   end
